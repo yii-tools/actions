@@ -5,7 +5,7 @@ on:
     inputs:
       coverage:
         description: Generate code coverage report.
-        default: pcov
+        default: none
         required: false
         type: string
       composer-command:
@@ -47,7 +47,7 @@ on:
         type: string
       test-command:
         description: Test command to run for each package.
-        default: phpunit 
+        default: phpunit
         required: false
         type: string
       tools:
