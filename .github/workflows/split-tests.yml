@@ -60,7 +60,7 @@ jobs:
   split-test:
     runs-on: ubuntu-latest
 
-    name: ${{ inputs.test-command }}-php-${{ matrix.php }}-${{ matrix.package_name }}
+    name: php-${{ matrix.php }}-${{ matrix.package_name }}
 
     strategy:
       matrix:
