@@ -47,7 +47,7 @@ on:
         type: string
       test-command:
         description: Test command to run for each package.
-        default: vendor/bin/phpunit 
+        default: phpunit 
         required: false
         type: string
       tools:
@@ -60,7 +60,7 @@ jobs:
   split-test:
     runs-on: ubuntu-latest
 
-    name: phpunit-${{ matrix.package_name }}
+    name: ${{ inputs.test-command }}-php-${{ matrix.php }}-${{ matrix.package_name }}
 
     strategy:
       matrix:
@@ -100,4 +100,4 @@ jobs:
 
       - name: Run split test.
         working-directory: packages/${{ matrix.package_name }}
-        run: ${{ inputs.test-command }}
+        run: vendor/bin/${{ inputs.test-command }}
