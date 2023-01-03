@@ -10,6 +10,45 @@
 
 To use these reusable github actions, simply create your `.yml` file, in your `.github/workflows` directory in your repository, and simply paste the code below:
 
+### Codeception tests
+
+`file: .github/workflows/codeception.yml`
+
+```yaml
+on:
+  pull_request:
+    paths-ignore:
+      - 'docs/**'
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - '.gitignore'
+      - '.gitattributes'
+      - 'infection.json.dist'
+      - 'psalm.xml'
+
+  push:
+    paths-ignore:
+      - 'docs/**'
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - '.gitignore'
+      - '.gitattributes'
+      - 'infection.json.dist'
+      - 'psalm.xml'
+
+name: build
+
+jobs:
+  codeception:
+    uses: yii-tools/actions/.github/workflows/build.yml@main
+    with:
+      extensions: fileinfo, intl
+      os: >-
+        ['ubuntu-latest']
+      php: >-
+        ['8.1', '8.2']
+```
+
 ### Composer require checker for monorepo
 
 `file: .github/workflows/dependency-checker.yml`
