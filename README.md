@@ -10,7 +10,7 @@
 
 To use these reusable github actions, simply create your `.yml` file, in your `.github/workflows` directory in your repository, and simply paste the code below:
 
-#### Composer require checker for monorepo
+### Composer require checker for monorepo
 
 `file: .github/workflows/dependency-checker.yml`
 
@@ -41,7 +41,7 @@ jobs:
       test-command: composer-require-checker
 ```
 
-#### Phpunit tests for monorepo
+### Phpunit tests for monorepo
 
 `file: .github/workflows/phpunit.yml`
 
