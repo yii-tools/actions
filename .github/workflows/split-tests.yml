@@ -89,9 +89,14 @@ jobs:
       - name: Install dependencies with composer global packages.
         run: ${{ inputs.composer-command-monorepo }}
 
+      - name: Localize composer paths for package.
+        run: vendor/bin/monorepo-builder localize-composer-paths packages/${{ matrix.package_name }}/composer.json --ansi
+
       - name: Install dependencies with composer for package.
         run: ${{ inputs.composer-command }}
         working-directory: packages/${{ matrix.package_name }}
+        env:
+          COMPOSER_ROOT_VERSION: ${{ inputs.composer-root-version }}
 
       - name: Run split test.
         working-directory: packages/${{ matrix.package_name }}
