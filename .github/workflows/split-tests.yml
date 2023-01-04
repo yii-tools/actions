@@ -55,9 +55,6 @@ on:
         default: composer:v2
         required: false
         type: string
-env:
-    # see https://github.com/composer/composer/issues/9368#issuecomment-718112361
-    COMPOSER_ROOT_VERSION: dev-main
 
 jobs:
   split-test:
@@ -91,9 +88,6 @@ jobs:
 
       - name: Install dependencies with composer global packages.
         run: ${{ inputs.composer-command-monorepo }}
-
-      - name: Localize composer paths for package.
-        run: vendor/bin/monorepo-builder localize-composer-paths packages/${{ matrix.package_name }}/composer.json --ansi
 
       - name: Install dependencies with composer for package.
         run: ${{ inputs.composer-command }}
