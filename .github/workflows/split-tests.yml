@@ -55,6 +55,9 @@ on:
         default: composer:v2
         required: false
         type: string
+env:
+    # see https://github.com/composer/composer/issues/9368#issuecomment-718112361
+    COMPOSER_ROOT_VERSION: dev-main
 
 jobs:
   split-test:
@@ -95,8 +98,6 @@ jobs:
       - name: Install dependencies with composer for package.
         run: ${{ inputs.composer-command }}
         working-directory: packages/${{ matrix.package_name }}
-        env:
-          COMPOSER_ROOT_VERSION: ${{ inputs.composer-root-version }}
 
       - name: Run split test.
         working-directory: packages/${{ matrix.package_name }}
