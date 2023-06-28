@@ -43,6 +43,7 @@ jobs:
 
     env:
       key: cache-v1
+      YII_ENV: tests
 
     runs-on: ${{ matrix.os }}
 
